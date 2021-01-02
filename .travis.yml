@@ -37,7 +37,7 @@ install:
  - raco pkg install --skip-installed --batch --auto https://github.com/cpsc411/cpsc411-interrogator.git?path=cpsc411-interrogator-lib#main
 
 script:
- - raco test --package cpsc411-reference-lib
- - raco test --package cpsc411-reference-tests
+# - raco test --package cpsc411-reference-lib
+# - raco test --package cpsc411-reference-tests
  - raco test --package cpsc411-interrogator-lib
  - raco setup
