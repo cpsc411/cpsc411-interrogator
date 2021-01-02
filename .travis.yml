@@ -26,7 +26,7 @@ before_install:
 
 install:
  - git clone https://$GITHUB_TOKEN@github.com/cpsc411/compilers2.0.git
- - raco pkg install --skip-installed --batch --auto compilers2.0/cpsc411-reference-lib
+ - raco pkg install --skip-installed --batch --auto compilers2.0/cpsc411-priv/cpsc411-reference-lib
 
 script:
  - raco test --package cpsc411-interrogator-lib
