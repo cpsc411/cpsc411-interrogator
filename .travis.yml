@@ -22,7 +22,7 @@ before_install:
   # - raco pkg install --auto macrotypes/macrotypes-lib/
   # - raco pkg install --auto macrotypes/turnstile-lib/
   # - raco pkg install --auto macrotypes/rackunit-macrotypes-lib/
-  - raco pkg install --skip-installed --batch --auto https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#rev=2020w2
+  - raco pkg install --skip-installed --batch --auto https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2
 
 install:
  - raco pkg install --skip-installed --batch --auto https://github.com/cpsc411/compilers2.0.git?path=cpsc411-priv/cpsc411-reference-lib#main
