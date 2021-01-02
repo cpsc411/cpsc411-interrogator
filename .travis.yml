@@ -25,7 +25,7 @@ before_install:
   - raco pkg install --skip-installed --batch --auto https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2
 
 install:
- - raco pkg install --skip-installed --batch --auto https://github.com/cpsc411/compilers2.0.git?path=cpsc411-priv/cpsc411-reference-lib#main
+ - raco pkg install --skip-installed --batch --auto https://$GITHUB_TOKEN@github.com/cpsc411/compilers2.0.git?path=cpsc411-priv/cpsc411-reference-lib#main
 
 script:
  - raco test --package cpsc411-interrogator-lib
