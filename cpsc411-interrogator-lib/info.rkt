@@ -5,7 +5,7 @@
     "rackunit-lib"
     "sandbox-lib"
     "web-server-lib"
-    ("base" #:version "7.5")
+    ("base" #:version "7.4")
     "cpsc411-lib"
     "cpsc411-reference-lib"))
 (define pkg-desc "implementation (no documentation, tests) of the cpsc411 interrogator")
