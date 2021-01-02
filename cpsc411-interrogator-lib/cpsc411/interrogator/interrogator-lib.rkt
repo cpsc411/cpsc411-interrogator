@@ -1,0 +1,104 @@
+#lang at-exp racket/base
+(require
+ racket/function
+ racket/dict
+ racket/sandbox
+ racket/port
+ racket/pretty
+ racket/format
+ net/cgi)
+
+(provide (all-defined-out))
+
+(pretty-print-current-style-table
+ (pretty-print-extend-style-table
+  (pretty-print-current-style-table)
+  '(module) '(begin)))
+
+(define (get-bindings/ignore)
+  (with-handlers ([values (lambda _ '())])
+    (get-bindings)))
+
+(define (make-interrogator-evaluator lang)
+  (parameterize ([sandbox-memory-limit 128]
+                 [sandbox-output 'string]
+                 [sandbox-error-output 'string]
+                 [sandbox-propagate-exceptions #f]
+                 [sandbox-gui-available #f])
+    (make-evaluator lang)))
+
+(define (get-valid-id-set sandbox-path)
+  (dynamic-require sandbox-path 'valid-id-set (thunk #f)))
+
+(define (trace-supported? sandbox-path)
+  (dynamic-require sandbox-path 'trace-support? (thunk #f)))
+
+;; Takes a path, as a string, to the CGI script responsible for processing the
+;; form input. Probably the path to the file that calls this function.
+;;
+;; Creates a form which expects at least the GET variable "an" to be set to an
+;; assignment string, "a1"--"a10".
+;; The form also processes the GET inputs "traced?", which expects a Racket
+;; boolean, and "test", which expects a string representing a quoted program to be
+;; compiled with the assignment reference solution (when "traced?") or a valid
+;; expression in the interrogator sandbox.
+(define (make-interrogator-form
+         action
+         #:bindings [bind-dict (get-bindings/ignore)]
+         #:assignment [assignment-number (dict-ref bind-dict 'an "a4")]
+         #:sandbox
+         [sandbox-path
+          (list 'lib (format "cpsc411/interrogator/~a-sandbox" assignment-number))])
+  (let ([evalor (make-interrogator-evaluator sandbox-path)]
+        [valid-id-set (get-valid-id-set sandbox-path)])
+    `(html (head (title "Enter a test case"))
+            (body
+             (form ([action ,action])
+                   "Enter a test case to interrogate the compiler:"
+                   (br)
+                   (textarea ([rows "20"]
+                              [name "test"]
+                              [cols "80"]
+                              [maxlength "1000"]))
+                   (br)
+                   (input ([type "hidden"] [name "an"] [value ,assignment-number]))
+                   ,@(if (trace-supported? sandbox-path)
+                         '((input ([type "checkbox"] [name "traced?"] [value "#t"]))
+                           (label ([for "traced?"]) "Trace the entire compiler?"))
+                         '())
+                   (br)
+                   (input ([type "submit"])))
+             ,@(if (dict-ref bind-dict 'test #f)
+                   (begin
+                     (let ([x (call-with-deep-time-limit
+                               60
+                               (thunk
+                                (evalor
+                                 ((if (dict-ref bind-dict 'traced? #f)
+                                      (curry format "(with-traced (compile ~a))")
+                                      values)
+                                  (dict-ref bind-dict 'test)))))])
+                       `((p "Standard output")
+                         (pre ,(pretty-format (get-output evalor) #:mode 'display))
+                         (p "Return value")
+                         (pre ,(pretty-format x #:mode 'display))
+                         (p "Standard error")
+                         (pre ,(get-error-output evalor))
+                         (br))))
+                   (if valid-id-set
+                       `((h2 "Instructions:")
+                         ,@(if (trace-supported? sandbox-path)
+                               `((p (unquote
+                                     @~a{If you check the box above, provide a
+                                            quoted surfance language program.
+                                            The interrogator will trace the entire
+                                            compilation of the program.
+                                            Otherwise, provide an expression or rackunit test using one
+                                            of the compiler passes, and the interrogator will run it.})))
+                               `((p (unquote
+                                     @~a{Provide an expression or rackunit test using one
+                                         of the compiler passes, and the interrogator will run it.}))))
+                         (p (unquote @~a{You can use the following identifiers:}))
+                         (ul
+                          ,@(map (lambda (x) `(li ,(~a x))) valid-id-set)))
+                       '()))))))
