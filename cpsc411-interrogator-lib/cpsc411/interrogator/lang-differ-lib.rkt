@@ -53,7 +53,7 @@
 
 (define (make-differ-form action #:bindings [bind-dict (get-bindings/ignore)])
   `(html
-    (meta ([charset utf-8]))
+    (meta ([charset "utf-8"]))
     (head
      (link ([rel "stylesheet"]
             [type "text/css"]
