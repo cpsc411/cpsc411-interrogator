@@ -6,4 +6,4 @@
  net/cgi)
 
 (output-http-headers)
-(display (xexpr->string (make-differ-form "lang-differ-cgi.rkt")))
+(display (xexpr->string (make-differ-form "lang-differ.cgi")))
