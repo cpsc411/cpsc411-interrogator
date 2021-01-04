@@ -4,7 +4,7 @@ This collection defines the interrogator for the UBC's Computer Science
 411 (CPSC 411), "Introduction to Compiler Construction".
 This code is meant to be run on the course server to give students the ability
 to interrogate the reference solution.
-The reference solution must be install on the server as well.
+The reference solution must be installed on the server as well.
 
 There are two tools: the compiler interrogator, and the language differ.
 
