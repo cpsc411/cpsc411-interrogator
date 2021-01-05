@@ -6,7 +6,11 @@
  racket/port
  racket/pretty
  racket/format
- net/cgi)
+ net/cgi
+ rackunit)
+
+(require/expose openssl/mzssl (X509_get_default_cert_file))
+
 
 (provide (all-defined-out))
 
@@ -22,9 +26,13 @@
 (define (make-interrogator-evaluator lang)
   (parameterize ([sandbox-memory-limit 128]
                  [sandbox-output 'string]
+                 [sandbox-eval-limits '(30 128)]
                  [sandbox-error-output 'string]
                  [sandbox-propagate-exceptions #f]
-                 [sandbox-gui-available #f])
+                 [sandbox-gui-available #f]
+                 [sandbox-path-permissions (append `((exists
+                                                     ,(X509_get_default_cert_file)))
+                                                   (sandbox-path-permissions))])
     (make-evaluator lang)))
 
 (define (get-valid-id-set sandbox-path)
