@@ -42,7 +42,6 @@ jobs:
         popd
         pushd compilers2.0/cpsc411-priv/cpsc411-reference-lib
         raco pkg install --batch --auto
-        raco setup
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build lib
