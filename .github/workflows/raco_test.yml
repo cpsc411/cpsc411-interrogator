@@ -33,6 +33,7 @@ jobs:
       with:
         repository: cpsc411/compilers2.0
         ref: main
+        ssh-key: ${{ secrets.PRIV_SSH_KEY }}
         path: compilers2.0
     - name: Install private dependencies
       run: raco pkg install --batch --auto ./compilers2.0/cpsc411-priv/cpsc411-reference-tests ./compilers2.0/cspc411-priv/cpsc411-reference-lib
