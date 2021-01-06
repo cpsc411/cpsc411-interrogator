@@ -29,9 +29,10 @@ jobs:
     - name: Checkout private dependencies
       uses: actions/checkout@v2
       with:
-        - path: compilers2.0
-        - ssh_key: ${{ secrets.PRIV_SSH_KEY }}
-        - ref: main
+-        repository: cpsc411/compilers2.0
+-        ref: main
+-        ssh-key: ${{ secrets.PRIV_SSH_KEY }}
+-        path: compilers2.0
     - name: Checkout
       uses: actions/checkout@v2
     - name: Install dependencies
