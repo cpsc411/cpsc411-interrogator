@@ -52,12 +52,3 @@ jobs:
     - name: Test lib setup
       run: |
         raco setup --only --pkgs cpsc411-interrogator-lib
-    - name: Build doc
-      run: |
-        raco pkg install --batch --auto ./cpsc411-interrogator/cpsc411-interrogator-doc
-    - name: Test doc
-      run: |
-        raco test -p cpsc411-interrogator-doc
-    - name: Test doc setup
-      run: |
-        raco setup --only --pkgs cpsc411-interrogator-doc
