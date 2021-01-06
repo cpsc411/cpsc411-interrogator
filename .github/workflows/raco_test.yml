@@ -40,7 +40,7 @@ jobs:
       run: |
         ls
         ls compilers2.0
-        raco pkg install --batch --auto ./compilers2.0/cpsc411-priv/cpsc411-reference-tests ./compilers2.0/cspc411-priv/cpsc411-reference-lib
+        raco pkg install --batch --auto ./compilers2.0/cpsc411-priv/cpsc411-reference-tests ./compilers2.0/cpsc411-priv/cpsc411-reference-lib
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build lib
