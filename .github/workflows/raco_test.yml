@@ -36,11 +36,13 @@ jobs:
         ssh-key: ${{ secrets.PRIV_SSH_KEY }}
         path: compilers2.0
     - name: Install private dependencies
-      working-directory: ${{ github.workspace }}
       run: |
-        ls
-        ls compilers2.0
-        raco pkg install --batch --auto ./compilers2.0/cpsc411-priv/cpsc411-reference-tests ./compilers2.0/cpsc411-priv/cpsc411-reference-lib
+        pushd compilers2.0/cpsc411-priv/cpsc411-reference-tests
+        raco pkg install --batch --auto
+        popd
+        pushd compilers2.0/cpsc411-priv/cpsc411-reference-lib
+        raco pkg install --batch --auto
+        raco setup
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build lib
