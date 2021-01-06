@@ -36,9 +36,9 @@ jobs:
         ssh-add - <<< "${{ secrets.PRIV_SSH_KEY }}"
     - name: Install dependencies
       run: |
-        raco pkg install --batch --auto |
-          https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2 |
-          https://github.com/cpsc411/compilers2.0.git?path=cpsc411-priv/cpsc411-reference-tests#main |
+        raco pkg install --batch --auto \
+          https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2 \
+          https://github.com/cpsc411/compilers2.0.git?path=cpsc411-priv/cpsc411-reference-tests#main \
           https://github.com/cpsc411/compilers2.0.git?path=cpsc411-priv/cpsc411-reference-lib#main
     - name: Checkout
       uses: actions/checkout@v2
