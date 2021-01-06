@@ -27,7 +27,7 @@ jobs:
         distribution: 'full' #'minimal'
         version: ${{ matrix.racket }}
     - name: Install pub dependencies
-      run: raco pkg install --batch --auto https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2
+      run: sudo raco pkg install --batch --auto https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2
     - name: Checkout private dependencies
       uses: actions/checkout@v2
       with:
@@ -38,16 +38,16 @@ jobs:
     - name: Install private dependencies
       run: |
         pushd compilers2.0/cpsc411-priv/cpsc411-reference-tests
-        raco pkg install --batch --auto
+        sudo raco pkg install --batch --auto
         popd
         pushd compilers2.0/cpsc411-priv/cpsc411-reference-lib
-        raco pkg install --batch --auto
+        sudo raco pkg install --batch --auto
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build lib
       run: |
-        raco pkg install --batch --auto ./cpsc411-interrogator-lib
+        sudo raco pkg install --batch --auto ./cpsc411-interrogator-lib
     - name: Test lib
       run: |
         raco test -p cpsc411-interrogator-lib
-        raco setup --only --pkgs cpsc411-interrogator-lib
+        sudo raco setup --only --pkgs cpsc411-interrogator-lib
