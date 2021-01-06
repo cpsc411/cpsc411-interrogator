@@ -35,13 +35,14 @@ jobs:
         path: compilers2.0
     - name: Checkout
       uses: actions/checkout@v2
+      path: cpsc411-interrogator
     - name: Install dependencies
       run: |
         raco pkg install --batch --auto \
           https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2 \
           ./compilers2.0/cpsc411-priv/cpsc411-reference-tests \
           ./compilers2.0/cpsc411-priv/cpsc411-reference-lib \
-          ./cpsc411-interrogator-lib
+          ./cpsc411-interrogator/cpsc411-interrogator-lib
     - name: Build lib
       run: |
         raco pkg install --batch --auto
