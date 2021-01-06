@@ -1,5 +1,9 @@
 cpsc411-interrogator
 =======
+<p align="left">
+  <a href="https://github.com/cpsc411/cpsc411-interrogator/actions?query=workflow%3A%22CI%22"><img alt="GitHub Actions status" src="https://github.com/cpsc411/cpsc411-interrogator/workflows/CI/badge.svg"></a>
+</p>
+
 This collection defines the interrogator for the UBC's Computer Science
 411 (CPSC 411), "Introduction to Compiler Construction".
 This code is meant to be run on the course server to give students the ability
