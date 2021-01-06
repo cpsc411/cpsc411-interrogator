@@ -12,10 +12,10 @@ on: [push, pull_request]
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-#    strategy:
-#      matrix:
-#        racket: [7.4,7.5,7.6,7.7,7.8,7.9,current]
-##        nasm: [2.13,2.14,2.15]
+    strategy:
+      matrix:
+        racket: [7.4,7.5,7.6,7.7,7.8,7.9,current]
+#        nasm: [2.13,2.14,2.15]
     steps:
     - name: Install system dependencies
       run: |
@@ -25,7 +25,7 @@ jobs:
       with:
         architecture: 'x64'
         distribution: 'full' #'minimal'
-        version: 7.4 #${{ matrix.racket }}
+        version: ${{ matrix.racket }}
     - name: Checkout private dependencies
       uses: actions/checkout@v2
       with:
@@ -49,4 +49,15 @@ jobs:
     - name: Test lib
       run: |
         raco test -p cpsc411-interrogator-lib
+    - name: Test lib setup
+      run: |
         raco setup --only --pkgs cpsc411-interrogator-lib
+    - name: Build doc
+      run: |
+        raco pkg install --batch --auto ./cpsc411-interrogator/cpsc411-interrogator-doc
+    - name: Test doc
+      run: |
+        raco test -p cpsc411-interrogator-doc
+    - name: Test doc setup
+      run: |
+        raco setup --only --pkgs cpsc411-interrogator-doc
