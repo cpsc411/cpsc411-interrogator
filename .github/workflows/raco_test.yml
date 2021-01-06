@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
 on: [push, pull_request]
 #
 #  # Allows you to run this workflow manually from the Actions tab
@@ -26,25 +26,24 @@ jobs:
         architecture: 'x64'
         distribution: 'full' #'minimal'
         version: 7.4 #${{ matrix.racket }}
-    - name: Setup SSH
-      env:
-        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-      run: |
-        mkdir -p ~/.ssh
-        ssh-keyscan github,com >> ~/.ssh/known_hosts
-        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-        ssh-add - <<< "${{ secrets.PRIV_SSH_KEY }}"
+    - name: Checkout private dependencies
+      uses: actions/checkout@v2
+      with:
+        - path: compilers2.0
+        - ssh_key: ${{ secrets.PRIV_SSH_KEY }}
+        - ref: main
+    - name: Checkout
+      uses: actions/checkout@v2
     - name: Install dependencies
       run: |
         raco pkg install --batch --auto \
           https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2 \
-          https://github.com/cpsc411/compilers2.0.git?path=cpsc411-priv/cpsc411-reference-tests#main \
-          https://github.com/cpsc411/compilers2.0.git?path=cpsc411-priv/cpsc411-reference-lib#main
-    - name: Checkout
-      uses: actions/checkout@v2
+          compilers2.0/cpsc411-priv/cpsc411-reference-tests \
+          compilers2.0/cpsc411-priv/cpsc411-reference-lib \
+          cpsc411-interrogator-lib
     - name: Build lib
       run: |
-        raco pkg install --batch --auto ./cpsc411-interrogator-lib
+        raco pkg install --batch --auto
     - name: Test lib
       run: |
         raco test -p cpsc411-interrogator-lib
