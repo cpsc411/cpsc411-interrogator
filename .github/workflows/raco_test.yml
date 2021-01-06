@@ -43,10 +43,9 @@ jobs:
           https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2 \
           ./compilers2.0/cpsc411-priv/cpsc411-reference-tests \
           ./compilers2.0/cpsc411-priv/cpsc411-reference-lib \
-          ./cpsc411-interrogator/cpsc411-interrogator-lib
     - name: Build lib
       run: |
-        raco pkg install --batch --auto
+        raco pkg install --batch --auto ./cpsc411-interrogator/cpsc411-interrogator-lib
     - name: Test lib
       run: |
         raco test -p cpsc411-interrogator-lib
