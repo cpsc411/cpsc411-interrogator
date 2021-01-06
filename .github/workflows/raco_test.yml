@@ -37,7 +37,9 @@ jobs:
         path: compilers2.0
     - name: Install private dependencies
       working-directory: ${{ github.workspace }}
-      run: raco pkg install --batch --auto ./compilers2.0/cpsc411-priv/cpsc411-reference-tests ./compilers2.0/cspc411-priv/cpsc411-reference-lib
+      run: |
+        ls
+        raco pkg install --batch --auto ./compilers2.0/cpsc411-priv/cpsc411-reference-tests ./compilers2.0/cspc411-priv/cpsc411-reference-lib
     - name: Checkout
       uses: actions/checkout@v2
     - name: Build lib
