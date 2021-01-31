@@ -7,6 +7,10 @@
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")
+ wrap-x64-run-time
+ wrap-x64-boilerplate
+
+ check-values-lang
  uniquify
  sequentialize-let
  canonicalize-bind
@@ -14,30 +18,39 @@
  uncover-locals
  assign-fvars
  replace-locations
- assign-homes
+ assign-homes ; composition
  flatten-begins
  patch-instructions
  implement-fvars
+ check-paren-x64
  generate-x64
- wrap-x64-run-time
- wrap-x64-boilerplate
+
+ interp-values-lang
+ interp-paren-x64
 
  valid-id-set)
 
 (define valid-id-set
   (append
-   '( uniquify
-      sequentialize-let
-      canonicalize-bind
-      select-instructions
-      uncover-locals
-      assign-fvars
-      replace-locations
-      assign-homes
-      flatten-begins
-      patch-instructions
-      implement-fvars
-      generate-x64
-      wrap-x64-run-time
-      wrap-x64-boilerplate)
+   '(
+     wrap-x64-run-time
+     wrap-x64-boilerplate
+
+     check-values-lang
+     uniquify
+     sequentialize-let
+     canonicalize-bind
+     select-instructions
+     uncover-locals
+     assign-fvars
+     replace-locations
+     assign-homes ; composition
+     flatten-begins
+     patch-instructions
+     implement-fvars
+     check-paren-x64
+     generate-x64
+
+     interp-values-lang
+     interp-paren-x64)
    base-valid-id-set))
