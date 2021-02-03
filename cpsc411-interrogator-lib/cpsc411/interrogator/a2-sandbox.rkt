@@ -2,6 +2,7 @@
 
 (require
  cpsc411/reference/a2-solution
+ cpsc411/compiler-lib
  cpsc411/2c-run-time
  "interrogator-base-sandbox.rkt")
 
@@ -54,3 +55,19 @@
      interp-values-lang
      interp-paren-x64)
    base-valid-id-set))
+
+(current-pass-list
+ (list
+  check-values-lang
+  uniquify
+  sequentialize-let
+  canonicalize-bind
+  select-instructions
+  assign-homes ; composition
+  flatten-begins
+  patch-instructions
+  implement-fvars
+  check-paren-x64
+  generate-x64
+  wrap-x64-run-time
+  wrap-x64-boilerplate))

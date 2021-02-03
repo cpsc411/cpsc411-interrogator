@@ -2,14 +2,12 @@
 (require
  racket/pretty
  racket/function
- ;; TODO: Need to collapse compiler lib into a single library, rather than
- ;; assignment specific ones.
- ;cpsc411/compiler-lib
+ cpsc411/compiler-lib
  rackunit)
 
 (provide
- ;with-traced
- ;compile
+ with-traced
+ compile
 
  parameterize
 

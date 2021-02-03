@@ -3,6 +3,7 @@
 (require
  cpsc411/reference/a3-solution
  cpsc411/2c-run-time
+ cpsc411/compiler-lib
  "interrogator-base-sandbox.rkt")
 
 (provide
@@ -54,3 +55,18 @@
      wrap-x64-run-time
      wrap-x64-boilerplate)
    base-valid-id-set))
+
+(current-pass-list
+ (list
+  check-values-lang
+  uniquify
+  sequentialize-let
+  canonicalize-bind
+  select-instructions
+  assign-homes-opt
+  flatten-begins
+  patch-instructions
+  implement-fvars
+  generate-x64
+  wrap-x64-run-time
+  wrap-x64-boilerplate))

@@ -18,4 +18,4 @@
    '(check-paren-x64
      interp-paren-x64
      generate-x64)
-   base-valid-id-set))
+   (remove* '(compile with-traced) base-valid-id-set)))
