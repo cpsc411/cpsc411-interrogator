@@ -1,12 +1,13 @@
 #lang racket/base
 
 (require
- "interrogator-base-sandbox.rkt"
+ (except-in "interrogator-base-sandbox.rkt" compile with-traced)
  cpsc411/v1-reference/a8-solution
  cpsc411/deprecated/a8-compiler-lib)
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")
+
  check-exprs-lang
  uniquify
  implement-safe-primops

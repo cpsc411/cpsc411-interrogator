@@ -3,7 +3,7 @@
 (require
  cpsc411/v1-reference/a6-solution
  cpsc411/deprecated/a6-compiler-lib
- "interrogator-base-sandbox.rkt")
+ (except-in "interrogator-base-sandbox.rkt" compile with-traced))
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")

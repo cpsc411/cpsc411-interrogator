@@ -3,10 +3,11 @@
 (require
  cpsc411/v1-reference/a7-solution
  cpsc411/deprecated/a7-compiler-lib
- "interrogator-base-sandbox.rkt")
+ (except-in "interrogator-base-sandbox.rkt" compile with-traced))
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")
+
  check-exprs-lang
  uniquify
  implement-safe-primops
