@@ -3,7 +3,7 @@
 (require
  cpsc411/v1-reference/a10-solution
  cpsc411/deprecated/a10-compiler-lib
- (except-in "interrogator-base-sandbox.rkt" compile with-traced))
+ (except-in "interrogator-base-sandbox.rkt" compile with-traced min-int max-int))
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")

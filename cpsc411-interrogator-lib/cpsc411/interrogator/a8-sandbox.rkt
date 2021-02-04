@@ -1,9 +1,9 @@
 #lang racket/base
 
 (require
- (except-in "interrogator-base-sandbox.rkt" compile with-traced)
+ "interrogator-base-sandbox.rkt"
  cpsc411/v1-reference/a8-solution
- cpsc411/deprecated/a8-compiler-lib)
+ (except-in cpsc411/deprecated/a8-compiler-lib compile with-traced min-int max-int))
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")

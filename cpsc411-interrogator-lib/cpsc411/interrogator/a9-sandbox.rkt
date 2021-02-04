@@ -2,8 +2,8 @@
 
 (require
  cpsc411/v1-reference/a9-solution
- cpsc411/deprecated/a9-compiler-lib
- (except-in "interrogator-base-sandbox.rkt" compile with-traced))
+ (except-in cpsc411/deprecated/a9-compiler-lib compile with-traced max-int min-int)
+ "interrogator-base-sandbox.rkt")
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")
