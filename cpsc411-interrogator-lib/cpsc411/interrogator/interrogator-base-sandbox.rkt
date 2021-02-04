@@ -22,6 +22,7 @@
  check-match
  check-exn
  check-not-exn
+ let
  lambda
  #%app
  #%datum
@@ -35,6 +36,7 @@
 
 (define base-valid-id-set
   '(parameterize
+    let
     compile
     max-int
     min-int
