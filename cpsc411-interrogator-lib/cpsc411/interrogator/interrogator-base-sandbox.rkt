@@ -8,6 +8,8 @@
 (provide
  with-traced
  compile
+ max-int
+ min-int
 
  parameterize
 
@@ -34,6 +36,8 @@
 (define base-valid-id-set
   '(parameterize
     compile
+    max-int
+    min-int
     check-equal?
     check-match
     check-exn
