@@ -1,28 +1,31 @@
 #lang racket/base
 
 (require
- cpsc411/v1-reference/a6-solution
- cpsc411/deprecated/a6-compiler-lib
+ cpsc411/reference/a6-solution
+ cpsc411/compiler-lib
  (except-in "interrogator-base-sandbox.rkt" compile with-traced max-int min-int))
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")
 
  check-values-lang
- type-check-values-lang
  uniquify
+ sequentialize-let
+ impose-calling-conventions
+ canonicalize-bind
  select-instructions
  uncover-locals
  undead-analysis
  conflict-analysis
- pre-assign-frame-variables
- assign-frames
+ assign-call-undead-variables
+ allocate-frames
  assign-registers
- assign-frame-variables
- discard-call-live
  replace-locations
+ assign-frame-variables
  implement-fvars
+ optimize-predicates
  expose-basic-blocks
+ resolve-predicates
  flatten-program
  patch-instructions
  generate-x64
