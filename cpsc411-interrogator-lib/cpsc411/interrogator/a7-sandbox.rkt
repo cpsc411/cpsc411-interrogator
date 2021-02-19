@@ -1,8 +1,8 @@
 #lang racket/base
 
 (require
- cpsc411/v1-reference/a7-solution
- cpsc411/deprecated/a7-compiler-lib
+ cpsc411/reference/a7-solution
+ cpsc411/compiler-lib
  (except-in "interrogator-base-sandbox.rkt" compile with-traced  max-int min-int))
 
 (provide
@@ -12,19 +12,23 @@
  uniquify
  implement-safe-primops
  specify-representation
- a-normalize
+ remove-complex-opera*
+ sequentialize-let
+ impose-calling-conventions
+ canonicalize-bind
  select-instructions
  uncover-locals
  undead-analysis
  conflict-analysis
- pre-assign-frame-variables
- assign-frames
+ assign-call-undead-variables
+ allocate-frames
  assign-registers
  assign-frame-variables
- discard-call-live
  replace-locations
+ optimize-predicates
  implement-fvars
  expose-basic-blocks
+ resolve-predicates
  flatten-program
  patch-instructions
  generate-x64
@@ -74,19 +78,23 @@
      uniquify
      implement-safe-primops
      specify-representation
-     a-normalize
+     remove-complex-opera*
+     sequentialize-let
+     impose-calling-conventions
+     canonicalize-bind
      select-instructions
      uncover-locals
      undead-analysis
      conflict-analysis
-     pre-assign-frame-variables
-     assign-frames
+     assign-call-undead-variables
+     allocate-frames
      assign-registers
      assign-frame-variables
-     discard-call-live
      replace-locations
+     optimize-predicates
      implement-fvars
      expose-basic-blocks
+     resolve-predicates
      flatten-program
      patch-instructions
      generate-x64
