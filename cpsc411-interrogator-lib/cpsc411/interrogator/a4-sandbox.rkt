@@ -20,7 +20,9 @@
  assign-homes-opt
  expose-basic-blocks
  resolve-predicates
+ optimize-jumps
  flatten-program
+ inline-jumps
  patch-instructions
  implement-fvars
  generate-x64
@@ -44,7 +46,9 @@
      assign-homes-opt
      expose-basic-blocks
      resolve-predicates
+     optimize-jumps
      flatten-program
+     inline-jumps
      patch-instructions
      implement-fvars
      generate-x64
