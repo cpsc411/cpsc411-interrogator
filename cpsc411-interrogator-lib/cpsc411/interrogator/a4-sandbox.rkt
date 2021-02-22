@@ -30,6 +30,11 @@
  wrap-x64-run-time
  wrap-x64-boilerplate
 
+ link-paren-x64
+ interp-paren-x64
+
+ interp-values-lang
+
  valid-id-set)
 
 (define valid-id-set
@@ -54,5 +59,11 @@
      generate-x64
 
      wrap-x64-run-time
-     wrap-x64-boilerplate)
+     wrap-x64-boilerplate
+
+     link-paren-x64
+     interp-paren-x64
+
+     interp-values-lang)
+
    base-valid-id-set))
