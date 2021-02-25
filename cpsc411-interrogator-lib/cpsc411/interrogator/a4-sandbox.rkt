@@ -3,6 +3,7 @@
 (require
  cpsc411/reference/a4-solution
  cpsc411/2c-run-time
+ cpsc411/compiler-lib
  "interrogator-base-sandbox.rkt")
 
 (provide
