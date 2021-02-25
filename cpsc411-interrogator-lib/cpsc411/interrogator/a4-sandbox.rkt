@@ -27,6 +27,11 @@
  implement-fvars
  generate-x64
 
+ current-assignable-registers
+ current-patch-instructions-registers
+ current-return-value-register
+ current-frame-base-pointer-register
+
  wrap-x64-run-time
  wrap-x64-boilerplate
 
@@ -57,6 +62,11 @@
      patch-instructions
      implement-fvars
      generate-x64
+
+     current-assignable-registers
+     current-patch-instructions-registers
+     current-return-value-register
+     current-frame-base-pointer-register
 
      wrap-x64-run-time
      wrap-x64-boilerplate
