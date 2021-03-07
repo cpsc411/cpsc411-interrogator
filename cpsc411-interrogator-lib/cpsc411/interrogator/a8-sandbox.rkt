@@ -3,7 +3,8 @@
 (require
  "interrogator-base-sandbox.rkt"
  cpsc411/v1-reference/a8-solution
- (except-in cpsc411/deprecated/a8-compiler-lib compile with-traced min-int max-int))
+ (except-in cpsc411/deprecated/a8-compiler-lib compile with-traced min-int
+            max-int current-pass-list))
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")
