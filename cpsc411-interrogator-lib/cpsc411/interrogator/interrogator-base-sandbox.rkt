@@ -12,6 +12,7 @@
  min-int
 
  parameterize
+ current-pass-list
 
  pretty-display
 
@@ -36,6 +37,7 @@
 
 (define base-valid-id-set
   '(parameterize
+    current-pass-list
     let
     compile
     max-int
