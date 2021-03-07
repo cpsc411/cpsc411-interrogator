@@ -32,6 +32,7 @@
  unquote
  thunk
  compose
+ list
 
  base-valid-id-set)
 
@@ -49,4 +50,5 @@
     compose
     pretty-display
     thunk
-    lambda))
+    lambda
+    list))
