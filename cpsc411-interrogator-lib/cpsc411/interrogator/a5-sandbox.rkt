@@ -55,8 +55,6 @@
      current-return-address-register
      current-frame-base-pointer-register
 
-     type-check-values-lang
-
      check-values-lang
      type-check-values-lang
      uniquify
