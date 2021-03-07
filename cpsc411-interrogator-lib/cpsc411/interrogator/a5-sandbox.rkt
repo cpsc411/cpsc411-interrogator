@@ -40,7 +40,11 @@
  interp-paren-x64
  link-paren-x64
 
- valid-id-set)
+ valid-id-set
+
+ trace-support?)
+
+(define trace-support? #t)
 
 (define valid-id-set
   (append
