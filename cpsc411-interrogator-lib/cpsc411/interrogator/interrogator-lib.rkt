@@ -66,8 +66,7 @@
                    (br)
                    (textarea ([rows "20"]
                               [name "test"]
-                              [cols "80"]
-                              [maxlength "1000"]))
+                              [cols "80"]))
                    (br)
                    (input ([type "hidden"] [name "an"] [value ,assignment-number]))
                    ,@(if (trace-supported? sandbox-path)
@@ -106,6 +105,20 @@
                                `((p (unquote
                                      @~a{Provide an expression or rackunit test using one
                                          of the compiler passes, and the interrogator will run it.}))))
+                         (p (unquote @~a{There is a de-factor limit on the size
+                                         of the input example, depending on your
+                                         browser. I strongly recommend using
+                                         Firefox, which has a large limit.
+                                         Limits for common browsers:})
+                            (ul
+                             ,@(for/list ([(k v)
+                                           (in-dict '((Chrome . 32779)
+                                                      (Android . 8192)
+                                                      (Firefox . >64k)
+                                                      (Safari . >64k)
+                                                      (IE . 2047)
+                                                      (Edge . 2047)))])
+                                 `(li ,(~a "~a's Limit: ~a character" k v)))))
                          (p (unquote @~a{You can use the following identifiers:}))
                          (ul
                           ,@(map (lambda (x) `(li ,(~a x))) valid-id-set)))
