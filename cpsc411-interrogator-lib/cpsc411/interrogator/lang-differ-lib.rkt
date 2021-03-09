@@ -23,7 +23,10 @@
  cpsc411/langs/v1
  cpsc411/langs/v2
  cpsc411/langs/v3
- cpsc411/langs/v4)
+ cpsc411/langs/v4
+ cpsc411/langs/v5
+ cpsc411/langs/v6
+ cpsc411/langs/v7)
 
 (provide (all-defined-out))
 
