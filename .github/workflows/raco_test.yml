@@ -30,8 +30,10 @@ jobs:
       run: |
         # required for raco test
         # NOTE: at-exp-lib is a built-time dependency; build first to prevent race conditions
+        # Similar for redex-lib
         raco pkg install --batch --auto compiler-lib \
-        at-exp-lib
+        at-exp-lib \
+        redex-lib
     - name: Checkout private dependencies
       uses: actions/checkout@v2
       with:
