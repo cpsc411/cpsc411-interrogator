@@ -118,7 +118,7 @@
                                                       (Safari . >64k)
                                                       (IE . 2047)
                                                       (Edge . 2047)))])
-                                 `(li ,(~a "~a's Limit: ~a character" k v)))))
+                                 `(li ,(format "~a's Limit: ~a character" k v)))))
                          (p (unquote @~a{You can use the following identifiers:}))
                          (ul
                           ,@(map (lambda (x) `(li ,(~a x))) valid-id-set)))
