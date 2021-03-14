@@ -66,7 +66,8 @@
                    (br)
                    (textarea ([rows "20"]
                               [name "test"]
-                              [cols "80"]))
+                              [cols "80"])
+                             ,(dict-ref bind-dict 'test ""))
                    (br)
                    (input ([type "hidden"] [name "an"] [value ,assignment-number]))
                    ,@(if (trace-supported? sandbox-path)
