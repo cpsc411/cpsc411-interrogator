@@ -7,9 +7,11 @@
 
 (define (start req)
   (start
-   (send/suspend
-    (lambda (k-url)
-      (response/xexpr
-       (make-interrogator-form k-url #:bindings (request-bindings req)))))))
+   (send/back
+    (response/xexpr
+     (make-interrogator-form "standalone.rkt" #:bindings (request-bindings req))))))
 
-(serve/servlet start #:port 8080 #:launch-browser? #f)
+(serve/servlet
+ start
+ #:port 8080
+ #:launch-browser? #f)
