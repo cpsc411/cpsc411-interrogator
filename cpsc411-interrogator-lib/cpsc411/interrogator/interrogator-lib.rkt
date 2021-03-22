@@ -66,6 +66,7 @@
                    (br)
                    (textarea ([rows "20"]
                               [name "test"]
+                              [id "test"]
                               [cols "80"])
                              ,(dict-ref bind-dict 'test ""))
                    (br)
@@ -89,7 +90,27 @@
                        `((p "Standard output")
                          (pre ,(pretty-format (get-output evalor) #:mode 'display))
                          (p "Return value")
-                         (pre ,(pretty-format x #:mode 'display))
+                         (script ([type "text/javascript"])
+                                 "function copyElementToClipboard(str) {
+  var copyText = document.getElementById(str).textContent;
+  const textArea = document.createElement('textarea');
+  textArea.textContent = copyText;
+  document.body.append(textArea);
+  try {
+    textArea.select();
+    document.execCommand(\"copy\");
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand(\"copy\");
+  }
+  finally {
+    textArea.remove()
+  };
+}")
+                         (input ([name "copy-return"]
+                                 [type "button"]
+                                 [value "Copy Return Value"]
+                                 [onClick "copyElementToClipboard(\"return-value\")"]))
+                         (pre ([id "return-value"]) ,(pretty-format x #:mode 'display))
                          (p "Standard error")
                          (pre ,(get-error-output evalor))
                          (br))))
