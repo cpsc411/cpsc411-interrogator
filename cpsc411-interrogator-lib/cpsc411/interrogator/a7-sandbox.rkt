@@ -11,6 +11,7 @@
  check-exprs-lang
  uniquify
  implement-safe-primops
+ implement-unsafe-primops
  specify-representation
  remove-complex-opera*
  sequentialize-let
@@ -77,6 +78,7 @@
    '(check-exprs-lang
      uniquify
      implement-safe-primops
+     implement-unsafe-primops
      specify-representation
      remove-complex-opera*
      sequentialize-let
