@@ -1,10 +1,9 @@
 #lang racket/base
 
 (require
- "interrogator-base-sandbox.rkt"
- cpsc411/v1-reference/a8-solution
- (except-in cpsc411/deprecated/a8-compiler-lib compile with-traced min-int
-            max-int current-pass-list))
+ cpsc411/reference/a8-solution
+ cpsc411/compiler-lib
+ (except-in "interrogator-base-sandbox.rkt" compile with-traced))
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")
@@ -12,21 +11,26 @@
  check-exprs-lang
  uniquify
  implement-safe-primops
+ implement-unsafe-primops
  specify-representation
- a-normalize
+ remove-complex-opera*
+ sequentialize-let
+ impose-calling-conventions
+ canonicalize-bind
  select-instructions
  expose-allocation-pointer
  uncover-locals
  undead-analysis
  conflict-analysis
- pre-assign-frame-variables
- assign-frames
+ assign-call-undead-variables
+ allocate-frames
  assign-registers
  assign-frame-variables
- discard-call-live
  replace-locations
+ optimize-predicates
  implement-fvars
  expose-basic-blocks
+ resolve-predicates
  flatten-program
  patch-instructions
  implement-mops
@@ -96,21 +100,26 @@
    '(check-exprs-lang
      uniquify
      implement-safe-primops
+     implement-unsafe-primops
      specify-representation
-     a-normalize
+     remove-complex-opera*
+     sequentialize-let
+     impose-calling-conventions
+     canonicalize-bind
      select-instructions
      expose-allocation-pointer
      uncover-locals
      undead-analysis
      conflict-analysis
-     pre-assign-frame-variables
-     assign-frames
+     assign-call-undead-variables
+     allocate-frames
      assign-registers
      assign-frame-variables
-     discard-call-live
      replace-locations
+     optimize-predicates
      implement-fvars
      expose-basic-blocks
+     resolve-predicates
      flatten-program
      patch-instructions
      implement-mops
