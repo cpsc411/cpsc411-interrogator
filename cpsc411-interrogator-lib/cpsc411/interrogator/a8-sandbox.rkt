@@ -77,12 +77,6 @@
  current-vector-tag
  current-vector-length-displacement
  current-vector-base-displacement
- current-procedure-shift
- current-procedure-mask
- current-procedure-tag
- current-procedure-size
- current-procedure-label-displacement
- current-procedure-arity-displacement
 
  interp-paren-x64
  link-paren-x64
@@ -166,12 +160,6 @@
      current-vector-tag
      current-vector-length-displacement
      current-vector-base-displacement
-     current-procedure-shift
-     current-procedure-mask
-     current-procedure-tag
-     current-procedure-size
-     current-procedure-label-displacement
-     current-procedure-arity-displacement
 
      interp-paren-x64
      link-paren-x64)
