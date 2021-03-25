@@ -88,7 +88,7 @@
                                       values)
                                   (dict-ref bind-dict 'test)))))])
                        `((p "Standard output")
-                         (pre ,(pretty-format (get-output evalor) #:mode 'display))
+                         (pre ,(pretty-format (get-output evalor) #:mode 'write))
                          (p "Return value")
                          (script ([type "text/javascript"])
                                  "function copyElementToClipboard(str) {
@@ -110,7 +110,7 @@
                                  [type "button"]
                                  [value "Copy Return Value"]
                                  [onClick "copyElementToClipboard(\"return-value\")"]))
-                         (pre ([id "return-value"]) ,(pretty-format x #:mode 'display))
+                         (pre ([id "return-value"]) ,(pretty-format x #:mode 'write))
                          (p "Standard error")
                          (pre ,(get-error-output evalor))
                          (br))))
