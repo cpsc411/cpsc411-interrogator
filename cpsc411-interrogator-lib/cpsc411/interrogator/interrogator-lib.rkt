@@ -41,6 +41,11 @@
 (define (trace-supported? sandbox-path)
   (dynamic-require sandbox-path 'trace-support? (thunk #f)))
 
+(define (make-output x)
+  (if (string? x)
+      (pretty-format x #:mode 'display)
+      (pretty-format x #:mode 'write)))
+
 ;; Takes a path, as a string, to the CGI script responsible for processing the
 ;; form input. Probably the path to the file that calls this function.
 ;;
@@ -88,7 +93,7 @@
                                       values)
                                   (dict-ref bind-dict 'test)))))])
                        `((p "Standard output")
-                         (pre ,(pretty-format (get-output evalor) #:mode 'write))
+                         (pre ,(make-output (get-output evalor)))
                          (p "Return value")
                          (script ([type "text/javascript"])
                                  "function copyElementToClipboard(str) {
@@ -110,7 +115,7 @@
                                  [type "button"]
                                  [value "Copy Return Value"]
                                  [onClick "copyElementToClipboard(\"return-value\")"]))
-                         (pre ([id "return-value"]) ,(pretty-format x #:mode 'write))
+                         (pre ([id "return-value"]) ,(make-output x))
                          (p "Standard error")
                          (pre ,(get-error-output evalor))
                          (br))))
