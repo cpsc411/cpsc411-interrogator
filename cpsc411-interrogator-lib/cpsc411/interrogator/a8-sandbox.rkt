@@ -36,6 +36,9 @@
  implement-mops
  generate-x64
 
+ -O2-pass-list
+ -O3-pass-list
+
  current-assignable-registers
  current-patch-instructions-registers
  current-parameter-registers
@@ -118,6 +121,9 @@
      patch-instructions
      implement-mops
      generate-x64
+
+     -O2-pass-list
+     -O3-pass-list
 
      current-assignable-registers
      current-patch-instructions-registers

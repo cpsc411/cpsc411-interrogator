@@ -41,6 +41,9 @@
 (define (trace-supported? sandbox-path)
   (dynamic-require sandbox-path 'trace-support? (thunk #f)))
 
+(define (O3-supported? sandbox-path)
+  (dynamic-require sandbox-path '-O3-pass-list (thunk #f)))
+
 (define (make-output x)
   (if (string? x)
       (pretty-format x #:mode 'display)
@@ -77,9 +80,14 @@
                    (br)
                    (input ([type "hidden"] [name "an"] [value ,assignment-number]))
                    ,@(if (trace-supported? sandbox-path)
-                         '((input ([type "checkbox"] [name "traced?"] [value "#t"]))
-                           (label ([for "traced?"]) "Trace the entire compiler?"))
+                         `((input ([type "checkbox"] [name "traced?"] [value "#t"]))
+                           (label ([for "traced?"]) "Trace the entire compiler?")
+                           ,@(if (O3-supported? sandbox-path)
+                                 `((input ([type "checkbox"] [name "o3?"] [value "#t"]))
+                                   (label ([for "o3?"]) "Enable -O3?"))
+                                 '()))
                          '())
+
                    (br)
                    (input ([type "submit"])))
              ,@(if (dict-ref bind-dict 'test #f)
@@ -88,9 +96,17 @@
                                60
                                (thunk
                                 (evalor
-                                 ((if (dict-ref bind-dict 'traced? #f)
-                                      (curry format "(with-traced (compile ~a))")
-                                      values)
+                                 ((compose
+                                   #;(lambda (p)
+                                     (displayln p)
+                                     (displayln bind-dict )
+                                     p)
+                                   (if (dict-ref bind-dict 'o3? #f)
+                                       (curry format "(parameterize ([current-pass-list -O3-pass-list]) ~a)")
+                                       values)
+                                   (if (dict-ref bind-dict 'traced? #f)
+                                       (curry format "(with-traced (compile ~a))")
+                                       values))
                                   (dict-ref bind-dict 'test)))))])
                        `((p "Standard output")
                          (pre ,(make-output (get-output evalor)))
