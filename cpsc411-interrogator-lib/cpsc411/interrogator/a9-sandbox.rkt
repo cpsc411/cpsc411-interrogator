@@ -1,9 +1,9 @@
 #lang racket/base
 
 (require
- cpsc411/v1-reference/a9-solution
- (except-in cpsc411/deprecated/a9-compiler-lib compile with-traced max-int min-int)
- "interrogator-base-sandbox.rkt")
+ cpsc411/reference/a9-solution
+ cpsc411/compiler-lib
+ (except-in "interrogator-base-sandbox.rkt" compile with-traced))
 
 (provide
  (all-from-out "interrogator-base-sandbox.rkt")
@@ -13,32 +13,42 @@
  define->letrec
  dox-lambdas
  implement-safe-primops
+ implement-safe-call
+ implement-unsafe-call
+ define->letrec
+ optimize-direct-calls
+ dox-lambdas
  uncover-free
  convert-closures
  optimize-known-calls
  hoist-lambdas
  implement-closures
- sequentialize-let
- implement-safe-apply
  specify-representation
- a-normalize
+ remove-complex-opera*
+ sequentialize-let
+ impose-calling-conventions
+ canonicalize-bind
  select-instructions
  expose-allocation-pointer
  uncover-locals
  undead-analysis
  conflict-analysis
- pre-assign-frame-variables
- assign-frames
+ assign-call-undead-variables
+ allocate-frames
  assign-registers
  assign-frame-variables
- discard-call-live
  replace-locations
+ optimize-predicates
  implement-fvars
  expose-basic-blocks
+ resolve-predicates
  flatten-program
  patch-instructions
  implement-mops
  generate-x64
+
+ -O2-pass-list
+ -O3-pass-list
 
  current-assignable-registers
  current-patch-instructions-registers
@@ -106,28 +116,35 @@
      define->letrec
      dox-lambdas
      implement-safe-primops
+     implement-safe-call
+     implement-unsafe-call
+     define->letrec
+     optimize-direct-calls
+     dox-lambdas
      uncover-free
      convert-closures
      optimize-known-calls
      hoist-lambdas
      implement-closures
-     sequentialize-let
-     implement-safe-apply
      specify-representation
-     a-normalize
+     remove-complex-opera*
+     sequentialize-let
+     impose-calling-conventions
+     canonicalize-bind
      select-instructions
      expose-allocation-pointer
      uncover-locals
      undead-analysis
      conflict-analysis
-     pre-assign-frame-variables
-     assign-frames
+     assign-call-undead-variables
+     allocate-frames
      assign-registers
      assign-frame-variables
-     discard-call-live
      replace-locations
+     optimize-predicates
      implement-fvars
      expose-basic-blocks
+     resolve-predicates
      flatten-program
      patch-instructions
      implement-mops
