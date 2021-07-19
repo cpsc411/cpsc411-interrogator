@@ -12,6 +12,11 @@ The reference solution must be installed on the server as well.
 
 There are two tools: the compiler interrogator, and the language differ.
 
+## Security Notes:
+Racket v8.2 is considered REQUIRED due a severe vulnerability in the sandbox mechanism affecting prior versions of Racket, enabling arbitrary code execution by students using the interrogator.
+
+If you have other security and sandboxing measures in place, you can manually override this version requirement and the interrogator should work back to version v7.4.
+
 ## Compiler Interrogator Usage
 The interrogator can be run either as a CGI script on a running web server, or
 run as a stand-alone web server via Racket's `web-server` package.

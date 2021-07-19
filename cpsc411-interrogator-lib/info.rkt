@@ -5,7 +5,7 @@
     "rackunit-lib"
     "sandbox-lib"
     "web-server-lib"
-    ("base" #:version "7.4")
+    ("base" #:version "8.2")
     "cpsc411-lib"
     "cpsc411-reference-lib"
     "functional-lib"
