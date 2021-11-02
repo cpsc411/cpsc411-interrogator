@@ -53,7 +53,7 @@ jobs:
           ./compilers2.0/cpsc411-priv/cpsc411-reference-lib \
     - name: Build lib
       run: |
-        # --force to work around issue with base version requirement
+        sed -i 's/ #:version \"8.2\"//' ./cpsc411-interrogator/cpsc411-interrogator-lib
         raco pkg install --force --batch --auto ./cpsc411-interrogator/cpsc411-interrogator-lib
     - name: Test lib
       run: |
