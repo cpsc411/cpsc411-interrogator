@@ -6,6 +6,7 @@
  racket/port
  racket/pretty
  racket/format
+ racket/string
  net/cgi
  rackunit)
 
@@ -31,7 +32,11 @@
                  [sandbox-propagate-exceptions #f]
                  [sandbox-gui-available #f]
                  [sandbox-path-permissions (append `((exists
-                                                     ,(X509_get_default_cert_file)))
+                                                     ,(X509_get_default_cert_file))
+                                                     ,@(for/list ([p (string-split (getenv "PATH") ":")])
+                                                         `(exists ,(path->string (build-path p "nasm"))))
+                                                     ,@(for/list ([p (string-split (getenv "PATH") ":")])
+                                                         `(exists ,(path->string (build-path p "ld")))))
                                                    (sandbox-path-permissions))])
     (make-evaluator lang)))
 
