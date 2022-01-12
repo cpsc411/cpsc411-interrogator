@@ -14,7 +14,7 @@
  check-values-lang
  uniquify
  sequentialize-let
- canonicalize-bind
+ normalize-bind
  select-instructions
  uncover-locals
  assign-fvars
@@ -43,7 +43,7 @@
      check-values-lang
      uniquify
      sequentialize-let
-     canonicalize-bind
+     normalize-bind
      select-instructions
      uncover-locals
      assign-fvars
@@ -64,7 +64,7 @@
   check-values-lang
   uniquify
   sequentialize-let
-  canonicalize-bind
+  normalize-bind
   select-instructions
   assign-homes ; composition
   flatten-begins

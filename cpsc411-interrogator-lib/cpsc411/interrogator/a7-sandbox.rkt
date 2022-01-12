@@ -16,7 +16,7 @@
  remove-complex-opera*
  sequentialize-let
  impose-calling-conventions
- canonicalize-bind
+ normalize-bind
  select-instructions
  uncover-locals
  undead-analysis
@@ -83,7 +83,7 @@
      remove-complex-opera*
      sequentialize-let
      impose-calling-conventions
-     canonicalize-bind
+     normalize-bind
      select-instructions
      uncover-locals
      undead-analysis
