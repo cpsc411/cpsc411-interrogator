@@ -31,10 +31,10 @@ jobs:
     - name: Checkout private dependencies
       uses: actions/checkout@v2
       with:
-        repository: cpsc411/compilers2.0
+        repository: cpsc411/cpsc411-priv
         ref: main
         ssh-key: ${{ secrets.PRIV_SSH_KEY }}
-        path: compilers2.0
+        path: cpsc411-priv
     - name: Checkout
       uses: actions/checkout@v2
       with:
@@ -43,8 +43,8 @@ jobs:
       run: |
         raco pkg install --batch --auto \
           https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2 \
-          ./compilers2.0/cpsc411-priv/cpsc411-reference-tests \
-          ./compilers2.0/cpsc411-priv/cpsc411-reference-lib \
+          ./cpsc411-priv/cpsc411-reference-tests \
+          ./cpsc411-priv/cpsc411-reference-lib \
     - name: Workaround base version requirement
       run: |
         sed -i 's/ #:version \"8.2\"//' ./cpsc411-interrogator/cpsc411-interrogator-lib/info.rkt
