@@ -42,7 +42,7 @@ jobs:
     - name: Install dependencies
       run: |
         raco pkg install --batch --auto \
-          https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2020w2 \
+          https://github.com/cpsc411/cpsc411-pub.git?path=cpsc411-lib#2021w2 \
           ./cpsc411-priv/cpsc411-reference-tests \
           ./cpsc411-priv/cpsc411-reference-lib \
     - name: Workaround base version requirement
