@@ -22,20 +22,12 @@ jobs:
       run: |
         sudo apt-get install nasm
     - name: Install Racket
-      uses: Bogdanp/setup-racket@v1.6.1
+      uses: Bogdanp/setup-racket@v1.7
       with:
         architecture: 'x64'
-        distribution: 'minimal'
+        distribution: 'full'
         variant: ${{ matrix.racket-variant }}
         version: ${{ matrix.racket-version }}
-    - name: Install Racket deps that can't be auto-installed
-      run: |
-        # required for raco test
-        # NOTE: at-exp-lib is a built-time dependency; build first to prevent race conditions
-        # Similar for redex-lib
-        raco pkg install --batch --auto compiler-lib \
-        at-exp-lib \
-        redex-lib
     - name: Checkout private dependencies
       uses: actions/checkout@v2
       with:
