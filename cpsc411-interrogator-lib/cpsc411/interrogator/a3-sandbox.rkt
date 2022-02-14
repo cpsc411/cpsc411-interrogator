@@ -30,6 +30,11 @@
  wrap-x64-run-time
  wrap-x64-boilerplate
 
+ current-assignable-registers
+ current-patch-instructions-registers
+ current-return-value-register
+ current-frame-base-pointer-register
+
  valid-id-set
  trace-support?)
 
@@ -56,7 +61,12 @@
      implement-fvars
      generate-x64
      wrap-x64-run-time
-     wrap-x64-boilerplate)
+     wrap-x64-boilerplate
+
+     current-assignable-registers
+     current-patch-instructions-registers
+     current-return-value-register
+     current-frame-base-pointer-register)
    base-valid-id-set))
 
 (current-pass-list
