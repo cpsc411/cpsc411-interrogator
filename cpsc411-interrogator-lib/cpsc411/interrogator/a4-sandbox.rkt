@@ -21,6 +21,7 @@
  assign-homes-opt
  expose-basic-blocks
  resolve-predicates
+ optimize-predicates
  optimize-jumps
  flatten-program
  inline-jumps
@@ -57,6 +58,7 @@
      assign-homes-opt
      expose-basic-blocks
      resolve-predicates
+     optimize-predicates
      optimize-jumps
      flatten-program
      inline-jumps
