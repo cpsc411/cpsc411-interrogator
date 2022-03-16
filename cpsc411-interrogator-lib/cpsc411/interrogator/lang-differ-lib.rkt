@@ -26,6 +26,7 @@
  cpsc411/langs/v4
  cpsc411/langs/v5
  cpsc411/langs/v6
+ cpsc411/langs/v6-5
  cpsc411/langs/v7
  cpsc411/langs/v8
  cpsc411/langs/v9)
