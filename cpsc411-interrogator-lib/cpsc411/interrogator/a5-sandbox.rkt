@@ -31,6 +31,7 @@
  assign-registers
  replace-locations
  expose-basic-blocks
+ optimize-predicates
  resolve-predicates
  flatten-program
  patch-instructions
@@ -69,6 +70,7 @@
      assign-registers
      replace-locations
      expose-basic-blocks
+     optimize-predicates
      resolve-predicates
      flatten-program
      patch-instructions
