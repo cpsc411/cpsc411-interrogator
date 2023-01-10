@@ -33,6 +33,8 @@
                  [sandbox-gui-available #f]
                  [sandbox-path-permissions (append `((exists
                                                      ,(X509_get_default_cert_file))
+                                                     (exists
+                                                      "/usr/lib/ssl/certs")
                                                      ,@(for/list ([p (string-split (getenv "PATH") ":")])
                                                          `(exists ,(path->string (build-path p "nasm"))))
                                                      ,@(for/list ([p (string-split (getenv "PATH") ":")])
