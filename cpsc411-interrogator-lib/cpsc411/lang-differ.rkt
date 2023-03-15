@@ -21,6 +21,6 @@
 
 (serve/servlet start
                #:port 8081
-               #:launch-browser? #t
+               #:launch-browser? #f
                #:servlet-path "/index.rkt"
                #:extra-files-paths (list scribble-path bettergrammar-path))
