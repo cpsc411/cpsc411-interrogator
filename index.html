@@ -1,0 +1,144 @@
+<html>
+
+<head>
+  <title>Enter a test case</title>
+  <style type="text/css"></style>
+</head>
+
+<body>
+  <form id="interrogator" action="interrogator.cgi">Enter a test case to interrogate the compiler:<br><textarea rows="20" name="test"
+      id="test" cols="80"></textarea><br><input type="hidden" name="an" value="a8"><input type="checkbox" name="traced?"
+      value="#t"><label for="traced?">Trace the entire compiler?</label><input type="checkbox" name="o3?"
+      value="#t"><label for="o3?">Enable -O3?</label><br><input id="name" name="name" type="submit"></form>
+  <h2>Instructions:</h2>
+  <p>If you check the box above, provide a
+    quoted surfance language program.
+    The interrogator will trace the entire
+    compilation of the program.
+    Otherwise, provide an expression or rackunit test using one
+    of the compiler passes, and the interrogator will run it.</p>
+  <p>There is a de-factor limit on the size
+    of the input example, depending on your
+    browser. I strongly recommend using
+    Firefox, which has a large limit.
+    Limits for common browsers:</p>
+  <ul>
+    <li>Chrome's Limit: 32779 character</li>
+    <li>Android's Limit: 8192 character</li>
+    <li>Firefox's Limit: &gt;64k character</li>
+    <li>Safari's Limit: &gt;64k character</li>
+    <li>IE's Limit: 2047 character</li>
+    <li>Edge's Limit: 2047 character</li>
+  </ul>
+  <p></p>
+  <p>You can use the following identifiers:</p>
+  <ul>
+    <li>check-exprs-lang</li>
+    <li>uniquify</li>
+    <li>implement-safe-primops</li>
+    <li>implement-unsafe-primops</li>
+    <li>specify-representation</li>
+    <li>remove-complex-opera*</li>
+    <li>sequentialize-let</li>
+    <li>impose-calling-conventions</li>
+    <li>normalize-bind</li>
+    <li>select-instructions</li>
+    <li>expose-allocation-pointer</li>
+    <li>uncover-locals</li>
+    <li>undead-analysis</li>
+    <li>conflict-analysis</li>
+    <li>assign-call-undead-variables</li>
+    <li>allocate-frames</li>
+    <li>assign-registers</li>
+    <li>assign-frame-variables</li>
+    <li>replace-locations</li>
+    <li>optimize-predicates</li>
+    <li>implement-fvars</li>
+    <li>expose-basic-blocks</li>
+    <li>resolve-predicates</li>
+    <li>flatten-program</li>
+    <li>patch-instructions</li>
+    <li>implement-mops</li>
+    <li>generate-x64</li>
+    <li>-O2-pass-list</li>
+    <li>-O3-pass-list</li>
+    <li>current-assignable-registers</li>
+    <li>current-patch-instructions-registers</li>
+    <li>current-parameter-registers</li>
+    <li>current-return-value-register</li>
+    <li>current-return-address-register</li>
+    <li>current-frame-base-pointer-register</li>
+    <li>current-heap-base-pointer-register</li>
+    <li>current-fixnum-shift</li>
+    <li>current-fixnum-mask</li>
+    <li>current-fixnum-tag</li>
+    <li>current-boolean-shift</li>
+    <li>current-boolean-mask</li>
+    <li>current-boolean-tag</li>
+    <li>current-true-ptr</li>
+    <li>current-false-ptr</li>
+    <li>current-empty-mask</li>
+    <li>current-empty-tag</li>
+    <li>current-empty-ptr</li>
+    <li>current-void-mask</li>
+    <li>current-void-tag</li>
+    <li>current-void-ptr</li>
+    <li>current-ascii-char-shift</li>
+    <li>current-ascii-char-mask</li>
+    <li>current-ascii-char-tag</li>
+    <li>current-error-shift</li>
+    <li>current-error-mask</li>
+    <li>current-error-tag</li>
+    <li>current-pair-shift</li>
+    <li>current-pair-mask</li>
+    <li>current-pair-tag</li>
+    <li>current-pair-size</li>
+    <li>current-car-displacement</li>
+    <li>current-cdr-displacement</li>
+    <li>car-offset</li>
+    <li>cdr-offset</li>
+    <li>current-vector-shift</li>
+    <li>current-vector-mask</li>
+    <li>current-vector-tag</li>
+    <li>current-vector-length-displacement</li>
+    <li>current-vector-base-displacement</li>
+    <li>interp-paren-x64</li>
+    <li>link-paren-x64</li>
+    <li>parameterize</li>
+    <li>current-pass-list</li>
+    <li>let</li>
+    <li>compile</li>
+    <li>max-int</li>
+    <li>min-int</li>
+    <li>check-equal?</li>
+    <li>check-match</li>
+    <li>check-exn</li>
+    <li>check-not-exn</li>
+    <li>compose</li>
+    <li>pretty-display</li>
+    <li>thunk</li>
+    <li>lambda</li>
+    <li>list</li>
+  </ul>
+
+  <script>
+    function removeWhiteSpaceAndNewLines(input) {
+      // replace all consequtive spaces, new lines, and tabs with a single space
+      if (!input) {
+        return ""
+      }
+      return input.replace(/\s+/g, " ").trim()
+    }
+
+    const form = document.getElementById('interrogator');
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const input = document.getElementById('test').value;
+      const cleanedInput = removeWhiteSpaceAndNewLines(input);
+      document.getElementById('test').value = cleanedInput;
+      form.submit()
+    });
+  </script>
+</body>
+
+</html>
