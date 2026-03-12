@@ -68,18 +68,3 @@
      current-return-value-register
      current-frame-base-pointer-register)
    base-valid-id-set))
-
-(current-pass-list
- (list
-  check-values-lang
-  uniquify
-  sequentialize-let
-  normalize-bind
-  select-instructions
-  assign-homes-opt
-  flatten-begins
-  patch-instructions
-  implement-fvars
-  generate-x64
-  wrap-x64-run-time
-  wrap-x64-boilerplate))

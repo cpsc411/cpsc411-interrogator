@@ -58,19 +58,3 @@
      interp-values-lang
      interp-paren-x64)
    base-valid-id-set))
-
-(current-pass-list
- (list
-  check-values-lang
-  uniquify
-  sequentialize-let
-  normalize-bind
-  select-instructions
-  assign-homes ; composition
-  flatten-begins
-  patch-instructions
-  implement-fvars
-  check-paren-x64
-  generate-x64
-  wrap-x64-run-time
-  wrap-x64-boilerplate))
